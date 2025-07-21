@@ -20,50 +20,51 @@
       z-index: -1;
     }
 
-    header {
+    section {
+      padding: 4rem 2rem;
       text-align: center;
-      padding: 2rem 1rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    h1, h2, h3 {
       color: #39ff14;
       text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
     }
 
-    h2 {
-      color: #0ff;
-      margin-bottom: 1rem;
-    }
-
     p {
-      font-size: 1rem;
       max-width: 700px;
-      margin: 0 auto 2rem auto;
+      margin: 1rem auto;
     }
 
     .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      margin-top: 1rem;
     }
 
-    .resume-btn, .linkedin-btn {
+    .btn {
       padding: 0.8rem 1.5rem;
       background: #1a1a1a;
       border: 1px solid #39ff14;
       color: #39ff14;
       border-radius: 5px;
       text-decoration: none;
+      margin: 0.5rem;
+      display: inline-block;
       transition: all 0.3s ease;
     }
 
-    .resume-btn:hover, .linkedin-btn:hover {
+    .btn:hover {
       background: #39ff14;
       color: #0f0f0f;
       box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
       transform: scale(1.05);
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
     }
 
     footer {
@@ -78,38 +79,56 @@
 
 <canvas id="bgCanvas"></canvas>
 
-<header>
+<section id="about">
   <h1>Jithu Manikandakumar</h1>
   <h2>Full Stack Web Developer</h2>
-  <p>
-    I create modern full-stack web applications using HTML, CSS, PHP, MySQL, and have hands-on experience with projects like Online College Voting System and Disaster Volunteering Portal. Certified in Cyber Security, IoT, and AI.
-  </p>
+  <p>I create modern full-stack web applications using HTML, CSS, PHP, MySQL. Certified in Cyber Security, IoT, and AI. Experienced with projects like Online College Voting System and Disaster Volunteering Portal.</p>
   <div class="button-group">
-    <a href="https://jithumon.github.io/portfolio/Resume.pdf" class="resume-btn" target="_blank">Download Resume</a>
-    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" class="linkedin-btn" target="_blank">Visit LinkedIn</a>
+    <a href="https://jithumon.github.io/portfolio/Resume.pdf" class="btn" target="_blank">Download Resume</a>
+    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" class="btn" target="_blank">LinkedIn</a>
   </div>
-</header>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card">
+    <h3>Online College Voting System</h3>
+    <p>A secure and transparent voting platform for college elections developed using PHP and MySQL.</p>
+  </div>
+  <div class="card">
+    <h3>Disaster Volunteering Portal</h3>
+    <p>Web portal connecting volunteers and victims during disasters. Built with HTML, CSS, JS, and PHP.</p>
+  </div>
+</section>
+
+<section id="certificates">
+  <h2>Certificates</h2>
+  <div class="card">
+    <h3>Cyber Security Essentials - Cisco</h3>
+  </div>
+  <div class="card">
+    <h3>Introduction to IoT - Cisco</h3>
+  </div>
+  <div class="card">
+    <h3>AI For Everyone - Coursera</h3>
+  </div>
+</section>
 
 <footer>
   &copy; 2025 Jithu Manikandakumar. All rights reserved.
 </footer>
 
-<!-- JavaScript: Floating Particle Effect -->
 <script>
   const canvas = document.getElementById("bgCanvas");
   const ctx = canvas.getContext("2d");
-
   let particlesArray = [];
   const colors = ["#39ff14", "#0ff", "#ff00ff", "#00f0ff"];
-
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
-
   function Particle() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
@@ -117,15 +136,12 @@
     this.speedX = Math.random() * 0.6 - 0.3;
     this.speedY = Math.random() * 0.6 - 0.3;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-
     this.update = function () {
       this.x += this.speedX;
       this.y += this.speedY;
-
       if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
       if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
     };
-
     this.draw = function () {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -133,14 +149,12 @@
       ctx.fill();
     };
   }
-
   function initParticles() {
     particlesArray = [];
     for (let i = 0; i < 100; i++) {
       particlesArray.push(new Particle());
     }
   }
-
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particlesArray.forEach((particle) => {
@@ -149,7 +163,6 @@
     });
     requestAnimationFrame(animateParticles);
   }
-
   initParticles();
   animateParticles();
 </script>
