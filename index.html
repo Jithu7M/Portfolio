@@ -1,129 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jithu Manikandakumar - Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin:0;
-  font-family:'Roboto Mono', monospace;
-  background:#0a0a0f;
-  color:#ffe0e8;
-}
-
-header {
-  text-align:center;
-  padding:80px 20px;
-}
-
-h1 {
-  font-family:'Orbitron', sans-serif;
-  font-size:3rem;
-  color:#ff0044;
-}
-
-.subtitle {
-  margin-top:10px;
-  font-size:1.2rem;
-}
-
-.section {
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-h2 {
-  color:#ff0044;
-  margin-bottom:20px;
-}
-
-.project-gallery {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
-}
-
-.project-card {
-  background:#1a1a1a;
-  padding:20px;
-  border-radius:10px;
-  border:1px solid #ff0044;
-}
-
-.project-card h3 {
-  color:#ff0044;
-}
-
-a {
-  color:#ff0044;
-  text-decoration:none;
-}
-
-.resume-btn {
-  display:inline-block;
-  padding:10px 20px;
-  border:1px solid #ff0044;
-  border-radius:5px;
-  margin-top:10px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jithu Manikandakumar - Cyber Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-red:#ff0044;
+      --neon-red-glow:rgba(255,0,68,0.7);
+      --dark-bg:#0a0a0f;
+      --card-bg:rgba(25,10,15,0.45);
+      --glass-border:rgba(255,0,68,0.22);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Roboto Mono',monospace;background:var(--dark-bg);color:#ffe0e8;}
+    header{text-align:center;padding:100px 20px 60px;}
+    h1{
+      font-family:'Orbitron',sans-serif;
+      font-size:4rem;
+      color:var(--neon-red);
+      text-shadow:0 0 25px var(--neon-red-glow);
+    }
+    .subtitle{font-size:1.3rem;margin:15px 0;}
+    a{color:var(--neon-red);text-decoration:none;}
+    .section{max-width:1100px;margin:auto;padding:50px 20px;}
+    h2{color:var(--neon-red);margin-bottom:25px;}
+    .project-gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:25px;
+    }
+    .project-card{
+      background:var(--card-bg);
+      border:1px solid var(--glass-border);
+      padding:25px;
+      border-radius:12px;
+      transition:0.3s;
+    }
+    .project-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 30px rgba(255,0,68,0.4);
+    }
+    .project-card h3{color:var(--neon-red);margin-bottom:10px;}
+    .resume-btn{
+      display:inline-block;
+      padding:12px 30px;
+      border:2px solid var(--neon-red);
+      border-radius:40px;
+      margin-top:20px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Jithu Manikandakumar</h1>
-  <p class="subtitle">Frontend Developer | Python & ML Enthusiast</p>
+  <h1>JITHU MANIKANDAKUMAR</h1>
+  <p class="subtitle">Frontend Developer | Python & ML Enthusiast | C, C++, Java</p>
   <p>
-    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" target="_blank">
-      LinkedIn Profile
-    </a>
+    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" target="_blank">LinkedIn Profile</a>
   </p>
 </header>
 
 <div class="section">
   <h2>About Me</h2>
-  <p>
-    Computer Science graduate skilled in full-stack development using HTML, CSS, PHP, and MySQL.
-    Experienced in building real-world applications and exploring Python-based projects.
-  </p>
+  <div class="project-card">
+    <p>I am a Computer Science graduate skilled in full-stack development using HTML, CSS, PHP, and MySQL. I have built real-world applications and also work on Python-based machine learning projects.</p>
+  </div>
 </div>
 
 <div class="section">
   <h2>Education</h2>
-  <p>B.Tech - Computer Science Engineering</p>
-  <p>Nehru College of Engineering and Research Centre</p>
-  <p>12th - 84% | 10th - 84%</p>
+  <div class="project-card">
+    <h3>B.Tech - Computer Science Engineering</h3>
+    <p>Nehru College of Engineering and Research Centre</p>
+  </div>
+  <div class="project-card">
+    <h3>12th - 84%</h3>
+    <p>Kerala State Board</p>
+  </div>
+  <div class="project-card">
+    <h3>10th - 84%</h3>
+    <p>CBSE</p>
+  </div>
 </div>
 
 <div class="section">
   <h2>Projects</h2>
-
   <div class="project-gallery">
 
     <div class="project-card">
       <h3>Online College Voting System</h3>
-      <p>Built using PHP, HTML, CSS, MySQL.</p>
+      <p>Built with PHP, HTML, CSS, MySQL.</p>
+      <p>Published in IJSREM.</p>
     </div>
 
     <div class="project-card">
       <h3>Disaster Volunteering Platform</h3>
       <p>Web portal to manage volunteers and aid services.</p>
+      <p>HTML, JavaScript, PHP, Python, MySQL.</p>
     </div>
 
     <div class="project-card">
       <h3>Admission Predictor</h3>
-      <p>Machine learning model using Python and Scikit-learn.</p>
+      <p>Machine learning model to predict student admission chances.</p>
+      <p>Python, Pandas, Scikit-learn.</p>
     </div>
 
     <div class="project-card">
       <h3>Salary Prediction</h3>
-      <p>Predicts salary using ML algorithms.</p>
+      <p>Predicts salary using machine learning algorithms.</p>
+      <p>Python.</p>
     </div>
 
   </div>
@@ -131,29 +119,31 @@ a {
 
 <div class="section">
   <h2>Skills</h2>
-  <p>HTML, CSS, PHP, MySQL</p>
-  <p>Python, Java, C, C++</p>
+  <div class="project-card">
+    <p>HTML, CSS, PHP, MySQL</p>
+    <p>Python, Java, C, C++</p>
+  </div>
 </div>
 
 <div class="section">
   <h2>Certificates</h2>
-  <ul>
-    <li>Cyber Security & Ethical Hacking Internship</li>
-    <li>IoT using LoRaWAN</li>
-    <li>Web Development with AI and AWS</li>
-  </ul>
+  <div class="project-card">
+    <p>Cyber Security & Ethical Hacking Internship</p>
+    <p>IoT using LoRaWAN</p>
+    <p>Web Development with AI and AWS</p>
+  </div>
 </div>
 
 <div class="section">
   <h2>Languages</h2>
-  <p>Malayalam, English, Hindi, Tamil</p>
+  <div class="project-card">
+    <p>Malayalam, English, Hindi, Tamil</p>
+  </div>
 </div>
 
-<div class="section">
+<div class="section" style="text-align:center;">
   <h2>Resume</h2>
-  <a href="https://jithu7m.github.io/Portfolio/Resume.pdf" target="_blank" class="resume-btn">
-    View Resume
-  </a>
+  <a href="https://jithu7m.github.io/Portfolio/Resume.pdf" target="_blank" class="resume-btn">View Resume</a>
 </div>
 
 </body>
