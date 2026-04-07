@@ -1,867 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jithu Manikandakumar - Cyber Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --neon-red:    #ff0044;
-      --neon-red-glow: rgba(255, 0, 68, 0.7);
-      --neon-cyan:   #00f6ff;
-      --neon-purple: #d400ff;
-      --dark-bg:     #0a0a0f;
-      --card-bg:     rgba(25, 10, 15, 0.45);
-      --glass-border: rgba(255, 0, 68, 0.22);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jithu Manikandakumar - Portfolio</title>
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Roboto Mono', monospace;
-      background: var(--dark-bg);
-      color: #ffe0e8;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+<style>
+body {
+  margin:0;
+  font-family:'Roboto Mono', monospace;
+  background:#0a0a0f;
+  color:#ffe0e8;
+}
 
-    canvas#particles {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-    }
+header {
+  text-align:center;
+  padding:80px 20px;
+}
 
-    header {
-      text-align: center;
-      padding: 100px 20px 60px;
-      background: linear-gradient(to bottom, rgba(15,5,10,0.92), transparent);
-    }
+h1 {
+  font-family:'Orbitron', sans-serif;
+  font-size:3rem;
+  color:#ff0044;
+}
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4.5rem;
-      letter-spacing: 8px;
-      background: linear-gradient(90deg, var(--neon-red), #ff3366, var(--neon-purple), var(--neon-red));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 25px var(--neon-red-glow), 0 0 45px rgba(255,51,102,0.5);
-      animation: glitch 4s infinite, hue-rotate 14s infinite;
-    }
+.subtitle {
+  margin-top:10px;
+  font-size:1.2rem;
+}
 
-    @keyframes glitch {
-      0%,100% { transform:translate(0); }
-      20% { transform:translate(-4px,4px); }
-      40% { transform:translate(4px,-4px); }
-      60% { transform:translate(-3px,3px); }
-      80% { transform:translate(3px,-3px); }
-    }
+.section {
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    @keyframes hue-rotate {
-      to { filter:hue-rotate(360deg); }
-    }
+h2 {
+  color:#ff0044;
+  margin-bottom:20px;
+}
 
-    .subtitle {
-      font-size: 1.4rem;
-      margin:15px 0 25px;
-      opacity:0.9;
-      letter-spacing:2px;
-      color: #ffccdd;
-    }
+.project-gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
 
-    .social-link {
-      color: var(--neon-red);
-      font-size:1.3rem;
-      text-decoration:none;
-      border-bottom:2px solid transparent;
-      transition:all 0.4s;
-    }
+.project-card {
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:10px;
+  border:1px solid #ff0044;
+}
 
-    .social-link:hover {
-      border-bottom-color: var(--neon-red);
-      text-shadow:0 0 18px var(--neon-red);
-    }
+.project-card h3 {
+  color:#ff0044;
+}
 
-    .section {
-      max-width:1100px;
-      margin:0 auto;
-      padding:60px 25px;
-    }
+a {
+  color:#ff0044;
+  text-decoration:none;
+}
 
-    h2 {
-      font-family:'Orbitron',sans-serif;
-      font-size:2.8rem;
-      color: var(--neon-red);
-      margin-bottom:35px;
-      position:relative;
-      display:inline-block;
-      padding-left:20px;
-      text-shadow: 0 0 12px rgba(255,0,68,0.6);
-    }
-
-    h2::before {
-      content:'>';
-      position:absolute;
-      left:0;
-      color: #ff3366;
-      font-size:1.6em;
-      animation:blink 1.2s infinite;
-    }
-
-    @keyframes blink { 50% { opacity:0.3; } }
-
-    .project-gallery, .education-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
-      gap:30px;
-      margin-top:30px;
-    }
-
-    .project-card, .edu-card {
-      background:var(--card-bg);
-      backdrop-filter:blur(12px);
-      border:1px solid var(--glass-border);
-      border-radius:16px;
-      padding:30px;
-      transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-      box-shadow:0 8px 32px rgba(0,0,0,0.5);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .project-card:hover, .edu-card:hover {
-      transform:translateY(-12px) scale(1.04);
-      box-shadow:0 0 50px rgba(255,0,68,0.45), 0 0 90px rgba(255,51,102,0.3);
-      border-color: var(--neon-red);
-    }
-
-    .project-card h3, .edu-card h3 {
-      color: var(--neon-red);
-      margin-bottom:15px;
-      font-size:1.6rem;
-      text-shadow: 0 0 10px rgba(255,0,68,0.5);
-    }
-
-    /* ────── TECHNICAL UPLINK ────── */
-    .skills-matrix .node-container {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:40px;
-      justify-items:center;
-      padding:20px 0;
-    }
-
-    .skill-node {
-      width:100%;
-      max-width:360px;
-      min-height:260px;
-      background:rgba(25,10,15,0.5);
-      border:1px solid var(--glass-border);
-      border-radius:24px;
-      backdrop-filter:blur(10px);
-      position:relative;
-      overflow:hidden;
-      transition:all 0.5s cubic-bezier(0.23,1,0.32,1.275);
-      box-shadow:0 10px 30px rgba(0,0,0,0.5);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      padding:30px 20px;
-      text-align:center;
-    }
-
-    .skill-node:hover {
-      transform:translateY(-15px) rotate(2deg);
-      box-shadow:0 0 70px rgba(255,0,68,0.6), inset 0 0 35px rgba(255,51,102,0.25);
-      border-color: var(--neon-red);
-    }
-
-    .node-core {
-      font-family:'Orbitron',sans-serif;
-      font-size:2.4rem;
-      font-weight:900;
-      color: var(--neon-red);
-      text-shadow:0 0 18px var(--neon-red-glow), 0 0 35px rgba(255,51,102,0.5);
-      letter-spacing:3px;
-      margin-bottom:30px;
-      line-height:1.1;
-    }
-
-    .node-glow {
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at 50% 30%, rgba(255,0,68,0.3), transparent 60%);
-      opacity:0.6;
-      transition:opacity 0.6s, background 0.6s;
-      pointer-events:none;
-    }
-
-    .skill-node:hover .node-glow {
-      opacity:1;
-      background:radial-gradient(circle at 50% 20%, rgba(255,51,102,0.45), transparent 70%);
-    }
-
-    .node-label {
-      font-size:1.45rem;
-      color:#ffe0e8;
-      font-weight:bold;
-      text-shadow:0 0 12px rgba(255,0,68,0.7);
-      margin-bottom:16px;
-    }
-
-    .node-sub {
-      font-size:1rem;
-      color:#ffccdd;
-      opacity:0.9;
-      line-height:1.5;
-      max-width:90%;
-    }
-
-    /* ────── PERSONA SHARDS ────── */
-    .persona-shards {
-      display:flex;
-      flex-wrap:wrap;
-      gap:30px;
-      justify-content:center;
-      margin-top:40px;
-    }
-
-    .shard {
-      width:220px;
-      height:220px;
-      position:relative;
-      clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background:rgba(30,10,20,0.6);
-      border:1px solid var(--glass-border);
-      backdrop-filter:blur(8px);
-      transition:all 0.6s ease;
-      box-shadow:0 0 25px rgba(0,0,0,0.6);
-    }
-
-    .shard:hover {
-      transform:rotate(8deg) scale(1.12) translateY(-10px);
-      box-shadow:0 0 60px rgba(255,0,68,0.7), inset 0 0 45px rgba(255,51,102,0.3);
-      border-color:var(--neon-red);
-    }
-
-    .shard-core {
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family:'Orbitron',sans-serif;
-      font-size:1.4rem;
-      color:var(--neon-red);
-      text-shadow:0 0 14px var(--neon-red-glow);
-      text-align:center;
-      padding:20px;
-      transform:rotate(-30deg);
-    }
-
-    .shard-glow {
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at 30% 30%, rgba(255,0,68,0.35), transparent 70%);
-      opacity:0;
-      transition:opacity 0.5s;
-    }
-
-    .shard:hover .shard-glow { opacity:0.85; }
-
-    /* ────── HOLO BADGES ────── */
-    .cert-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:35px;
-      margin-top:40px;
-    }
-
-    .holo-badge {
-      height:180px;
-      background:linear-gradient(135deg, rgba(30,15,25,0.7), rgba(15,5,15,0.7));
-      border:2px solid rgba(255,0,68,0.35);
-      border-radius:24px;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter:blur(10px);
-      box-shadow:0 10px 40px rgba(0,0,0,0.6);
-      transition:all 0.5s;
-    }
-
-    .holo-badge:hover {
-      transform:scale(1.06) translateY(-8px);
-      border-color:var(--neon-red);
-      box-shadow:0 0 80px rgba(255,0,68,0.5);
-    }
-
-    .badge-content {
-      position:relative;
-      z-index:2;
-      padding:25px;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .badge-title {
-      font-size:1.35rem;
-      color:var(--neon-red);
-      margin-bottom:12px;
-      text-shadow:0 0 12px var(--neon-red-glow);
-    }
-
-    .badge-scan {
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to bottom, transparent 40%, rgba(255,0,68,0.18) 50%, transparent 60%);
-      animation:scanline 6s linear infinite;
-      pointer-events:none;
-    }
-
-    @keyframes scanline {
-      0% { transform:translateY(-100%); }
-      100% { transform:translateY(100%); }
-    }
-
-    .badge-projection {
-      position:absolute;
-      top:-30%; left:-30%;
-      width:160%; height:160%;
-      background:radial-gradient(circle at 20% 20%, rgba(255,0,68,0.3), transparent 50%);
-      opacity:0.55;
-      pointer-events:none;
-    }
-
-    /* ────── LANGUAGE ORBIT ────── */
-    .lang-orbit {
-      display:flex;
-      flex-wrap:wrap;
-      gap:40px;
-      justify-content:center;
-      margin-top:40px;
-    }
-
-    .orbit-ring {
-      width:180px;
-      height:180px;
-      position:relative;
-    }
-
-    .orbit-circle {
-      position:absolute;
-      inset:0;
-      border:3px solid var(--glass-border);
-      border-radius:50%;
-      background:conic-gradient(var(--neon-red) 0% var(--level), transparent var(--level), transparent);
-      animation:spin-slow 22s linear infinite;
-    }
-
-    @keyframes spin-slow { to { transform:rotate(360deg); } }
-
-    .orbit-core {
-      position:absolute;
-      inset:20px;
-      background:rgba(20,10,20,0.8);
-      border:1px solid var(--neon-red);
-      border-radius:50%;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      backdrop-filter:blur(6px);
-      box-shadow:inset 0 0 25px rgba(255,0,68,0.25);
-    }
-
-    .orbit-lang {
-      font-size:1.5rem;
-      font-weight:bold;
-      color:#ff3366;
-      text-shadow:0 0 12px rgba(255,51,102,0.8);
-    }
-
-    .orbit-level {
-      font-size:0.95rem;
-      color:var(--neon-red);
-      margin-top:6px;
-      opacity:0.9;
-    }
-
-    .resume-btn {
-      display:inline-block;
-      margin:40px auto;
-      padding:16px 40px;
-      font-size:1.3rem;
-      background:transparent;
-      color:var(--neon-red);
-      border:2px solid var(--neon-red);
-      border-radius:50px;
-      text-decoration:none;
-      font-weight:bold;
-      transition:all 0.4s;
-      box-shadow:0 0 25px rgba(255,0,68,0.4);
-    }
-
-    .resume-btn:hover {
-      background:linear-gradient(45deg,var(--neon-red), #ff3366);
-      color:#000;
-      transform:scale(1.08);
-      box-shadow:0 0 55px rgba(255,0,68,0.7);
-    }
-
-    @media (max-width:768px) {
-      h1 { font-size:3.2rem; }
-      h2 { font-size:2.2rem; }
-      header { padding:80px 15px 50px; }
-    }
-  </style>
+.resume-btn {
+  display:inline-block;
+  padding:10px 20px;
+  border:1px solid #ff0044;
+  border-radius:5px;
+  margin-top:10px;
+}
+</style>
 </head>
+
 <body>
 
-  <canvas id="particles"></canvas>
+<header>
+  <h1>Jithu Manikandakumar</h1>
+  <p class="subtitle">Frontend Developer | Python & ML Enthusiast</p>
+  <p>
+    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" target="_blank">
+      LinkedIn Profile
+    </a>
+  </p>
+</header>
 
-  <header>
-    <h1>JITHU MANIKANDAKUMAR</h1>
-    <p class="subtitle">Frontend DEVELOPER | Jr App Developer| C, C++, Java, Python Enthusiast</p>
-    <p>
-      <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" target="_blank" class="social-link">→ LinkedIn Profile</a>
-    </p>
-  </header>
+<div class="section">
+  <h2>About Me</h2>
+  <p>
+    Computer Science graduate skilled in full-stack development using HTML, CSS, PHP, and MySQL.
+    Experienced in building real-world applications and exploring Python-based projects.
+  </p>
+</div>
 
-  <div class="section">
-    <h2>About Me</h2>
+<div class="section">
+  <h2>Education</h2>
+  <p>B.Tech - Computer Science Engineering</p>
+  <p>Nehru College of Engineering and Research Centre</p>
+  <p>12th - 84% | 10th - 84%</p>
+</div>
+
+<div class="section">
+  <h2>Projects</h2>
+
+  <div class="project-gallery">
+
     <div class="project-card">
-      <p>I am a passionate Computer Science graduate skilled in full-stack web development using HTML, CSS, PHP, and MySQL. I’ve worked on real-world projects like an Online College Voting System and a Disaster Volunteering Platform. I also have basic knowledge in C, C++, OOP with Java, and Python.</p>
+      <h3>Online College Voting System</h3>
+      <p>Built using PHP, HTML, CSS, MySQL.</p>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Education</h2>
-    <div class="education-grid">
-      <div class="edu-card">
-        <h3>Degree - B TECH - Computer Science Engineering - Nehru College of Engineering and Research Centre,Pampady</h3>
-      </div>
-      <div class="edu-card">
-        <h3>12th - KeraLa State Board - GHSS Panjal - 84%</h3>
-      </div>
-      <div class="edu-card">
-        <h3>10th - CBSE - AL-Irshad English School,Killimangalam - 84%</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Projects</h2>
-    <div class="project-gallery">
-      <div class="project-card">
-        <h3>Online College Voting System</h3>
-        <p>Built with PHP, Java, HTML, CSS, MySQL using XAMPP and VS Code. </p>
-        <p>Published in IJSREM, Vol 08, Issue 07, July 2024.</p>
-      </div>
-      <div class="project-card">
-        <h3>Unity in Service - Disaster Volunteering</h3>
-        <p>Web portal to manage disaster volunteers and aid services.</p>
-        <p>Developed using HTML, JavaScript, PHP, Python, MySQL.</p>
-        <p>Published in IJSREM.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Technical Uplink</h2>
-    <div class="skills-matrix">
-      <div class="node-container">
-        <div class="skill-node">
-          <div class="node-core">Web Stack</div>
-          <div class="node-glow"></div>
-          <div class="node-label">HTML, CSS, PHP, MySQL</div>
-          <div class="node-sub">Full-stack web development</div>
-        </div>
-        <div class="skill-node">
-          <div class="node-core">Java</div>
-          <div class="node-glow"></div>
-          <div class="node-label">Java (OOP)</div>
-          <div class="node-sub">Object Oriented Programming</div>
-        </div>
-        <div class="skill-node">
-          <div class="node-core">Python</div>
-          <div class="node-glow"></div>
-          <div class="node-label">Python</div>
-          <div class="node-sub">Scripting & general purpose</div>
-        </div>
-        <div class="skill-node">
-          <div class="node-core">C/C++</div>
-          <div class="node-glow"></div>
-          <div class="node-label">C, C++</div>
-          <div class="node-sub">Systems & performance programming</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Persona Shards</h2>
-    <div class="persona-shards">
-      <div class="shard"><div class="shard-glow"></div><div class="shard-core">Leadership & Teamwork</div></div>
-      <div class="shard"><div class="shard-glow"></div><div class="shard-core">Effective Communication</div></div>
-      <div class="shard"><div class="shard-glow"></div><div class="shard-core">Problem-Solving</div></div>
-      <div class="shard"><div class="shard-glow"></div><div class="shard-core">Adaptability & Quick Learner</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Certificates</h2>
-    <div class="cert-grid">
-      <div class="holo-badge">
-        <div class="badge-projection"></div>
-        <div class="badge-scan"></div>
-        <div class="badge-content">
-          <div class="badge-title">Cyber Security & Ethical Hacking Internship</div>
-        </div>
-      </div>
-      <div class="holo-badge">
-        <div class="badge-projection"></div>
-        <div class="badge-scan"></div>
-        <div class="badge-content">
-          <div class="badge-title">IoT using LoRaWAN – 5 Day Internship</div>
-        </div>
-      </div>
-      <div class="holo-badge">
-        <div class="badge-projection"></div>
-        <div class="badge-scan"></div>
-        <div class="badge-content">
-          <div class="badge-title">Web Development with AI and AWS – IEDC Workshop</div>
-        </div>
-      </div>
-      <div class="holo-badge">
-        <div class="badge-projection"></div>
-        <div class="badge-scan"></div>
-        <div class="badge-content">
-          <div class="badge-title">AI Outreach Workshop – Technex’23 IIT Varanasi (by Innovians Technology)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Language Orbit</h2>
-    <div class="lang-orbit">
-      <div class="orbit-ring" style="--level:100%;">
-        <div class="orbit-circle"></div>
-        <div class="orbit-core">
-          <div class="orbit-lang">Malayalam</div>
-          <div class="orbit-level">Native (Read, Write, Speak)</div>
-        </div>
-      </div>
-      <div class="orbit-ring" style="--level:95%;">
-        <div class="orbit-circle"></div>
-        <div class="orbit-core">
-          <div class="orbit-lang">English</div>
-          <div class="orbit-level">Professional Proficiency</div>
-        </div>
-      </div>
-      <div class="orbit-ring" style="--level:90%;">
-        <div class="orbit-circle"></div>
-        <div class="orbit-core">
-          <div class="orbit-lang">Hindi</div>
-          <div class="orbit-level">Professional Proficiency</div>
-        </div>
-      </div>
-      <div class="orbit-ring" style="--level:50%;">
-        <div class="orbit-circle"></div>
-        <div class="orbit-core">
-          <div class="orbit-lang">Tamil</div>
-          <div class="orbit-level">Basic Understanding & Speaking</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" style="text-align:center;">
-    <h2>Resume</h2>
-    <a href="https://jithu7m.github.io/Portfolio/Resume.pdf" class="resume-btn" target="_blank">View Resume</a>
-  </div>
-
-  <script>
-    // Particle Background - now with red/cyan mix
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    let particlesArray = [];
-    const numberOfParticles = 140;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.8 + 0.6;
-        this.speedX = Math.random() * 0.9 - 0.45;
-        this.speedY = Math.random() * 0.9 - 0.45;
-        this.hue = Math.random() > 0.5 ? 340 : 180; // red ~ magenta or cyan
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.hue < 200 
-          ? 'rgba(0, 246, 255, 0.65)' 
-          : 'rgba(255, 0, 68, 0.65)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particlesArray = [];
-      for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
-    }
-
-    function connectParticles() {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-          const distance = Math.hypot(
-            particlesArray[a].x - particlesArray[b].x,
-            particlesArray[a].y - particlesArray[b].y
-          );
-          if (distance < 130) {
-            ctx.strokeStyle = particlesArray[a].hue < 200
-              ? `rgba(0, 246, 255, ${1 - distance/130})`
-              : `rgba(255, 0, 68, ${1 - distance/130})`;
-            ctx.lineWidth = 0.7;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => { p.update(); p.draw(); });
-      connectParticles();
-      requestAnimationFrame(animateParticles);
-    }
-
-    initParticles();
-    animateParticles();
-  </script>
-</body>
-                                                                                                      </html>      padding-left: 10px;
-      margin-top: 40px;
-    }
-
-    .section {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    p, li {
-      line-height: 1.7;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li::before {
-      content: '⚡';
-      margin-right: 8px;
-      color: #0ff;
-    }
-
-    .project-gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .project-card {
-      border: 1px solid #0ff;
-      padding: 15px;
-      border-radius: 10px;
-      background-color: #1a1a1a;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 15px #0ff;
-    }
-
-    .resume-btn {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 10px 20px;
-      color: #0ff;
-      border: 1px solid #0ff;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .resume-btn:hover {
-      background-color: #0ff;
-      color: #000;
-    }
-
-    .skills-bar {
-      background: #333;
-      border-radius: 10px;
-      margin: 10px 0;
-      overflow: hidden;
-    }
-
-    .skills-bar-fill {
-      background: #0ff;
-      color: #000;
-      padding: 5px 10px;
-      font-weight: bold;
-      width: 0;
-      animation: fillBar 2s forwards;
-    }
-
-    @keyframes fillBar {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    .neon-glow {
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-      }
-      to {
-        text-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1 class="neon-glow">Jithu Manikandakumar - Portfolio</h1>
-    <p>Full Stack Developer | C, C++, Java, Python Enthusiast</p>
-     <p>
-    <a href="https://www.linkedin.com/in/jithu-manikandakumar-35b364320" target="_blank" style="color:#0ff; text-decoration:none;">LinkedIn Profile</a>
-    </p>
-  </header>
-
-  <div class="section">
-    <h2>About Me</h2>
-    <p>I am a passionate Computer Science graduate skilled in full-stack web development using HTML, CSS, PHP, and MySQL. I’ve worked on real-world projects like an Online College Voting System and a Disaster Volunteering Platform. I also have basic knowledge in C, C++, OOP with Java, and Python.</p>
-  </div>
-    <div class="section">
-    <h2>Education</h2>
     <div class="project-card">
-    <h3>Degree - B TECH - Computer Science Engineering - Nehru College of Engineering and Research Centre,Pampady</h3>
+      <h3>Disaster Volunteering Platform</h3>
+      <p>Web portal to manage volunteers and aid services.</p>
     </div>
+
     <div class="project-card">
-    <h3>12th - KeraLa State Board - GHSS Panjal - 84%</h3>
+      <h3>Admission Predictor</h3>
+      <p>Machine learning model using Python and Scikit-learn.</p>
     </div>
+
     <div class="project-card">
-    <h3>10th - CBSE - AL-Irshad English School,Killimangalam - 84%</h3>
+      <h3>Salary Prediction</h3>
+      <p>Predicts salary using ML algorithms.</p>
     </div>
-    </div>
-  <div class="section">
-    <h2>Projects</h2>
-    <div class="project-gallery">
-      <div class="project-card">
-        <h3>Online College Voting System</h3>
-        <p>Built with PHP, Java, HTML, CSS, MySQL using XAMPP and VS Code. </p>
-        <p>Published in IJSREM, Vol 08, Issue 07, July 2024.</p>
-      </div>
-      <div class="project-card">
-        <h3>Unity in Service - Disaster Volunteering</h3>
-        <p>Web portal to manage disaster volunteers and aid services.</p> 
-        <p>Developed using HTML, JavaScript, PHP, Python, MySQL.</p> 
-        <p>Published in IJSREM.</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>HTML, CSS, PHP, MySQL</li>
-      <li>C, C++, Java (OOP), Python</li>
-    </ul>
-    <div class="skills-bar"><div class="skills-bar-fill" style="width: 90%;">HTML/CSS/PHP - 90%</div></div>
-    <div class="skills-bar"><div class="skills-bar-fill" style="width: 75%;">Java & OOP - 75%</div></div>
-    <div class="skills-bar"><div class="skills-bar-fill" style="width: 60%;">Python - 50%</div></div>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Certificates</h2>
-    <ul>
-      <li>Cyber Security & Ethical Hacking Internship</li>
-      <li>IoT using LoRaWAN – 5 Day Internship</li>
-      <li>Web Development with AI and AWS – IEDC Workshop</li>
-      <li>AI Outreach Workshop – Technex’23 IIT Varanasi (by Innovians Technology)</li>
-    </ul>
-  </div>
+<div class="section">
+  <h2>Skills</h2>
+  <p>HTML, CSS, PHP, MySQL</p>
+  <p>Python, Java, C, C++</p>
+</div>
 
-  <div class="section">
-    <h2>Soft Skills</h2>
-    <ul>
-      <li>Leadership & Teamwork</li>
-      <li>Effective Communication</li>
-      <li>Problem-Solving</li>
-      <li>Adaptability & Quick Learner</li>
-    </ul>
-  </div>
+<div class="section">
+  <h2>Certificates</h2>
+  <ul>
+    <li>Cyber Security & Ethical Hacking Internship</li>
+    <li>IoT using LoRaWAN</li>
+    <li>Web Development with AI and AWS</li>
+  </ul>
+</div>
 
-  <div class="section">
-    <h2>Languages Known</h2>
-    <ul>
-      <li>Malayalam – Native (Read, Write, Speak)</li>
-      <li>English – Professional Proficiency</li>
-      <li>Hindi – Professional Proficiency</li>
-      <li>Tamil – Basic Understanding & Speaking</li>
-    </ul>
-  </div>
+<div class="section">
+  <h2>Languages</h2>
+  <p>Malayalam, English, Hindi, Tamil</p>
+</div>
 
-  <div class="section">
-    <h2>Resume</h2>
-    <a href="https://jithu7m.github.io/Portfolio/Resume.pdf" class="resume-btn" target="_blank" rel="noopener noreferrer">View Resume</a>
-  </div>
+<div class="section">
+  <h2>Resume</h2>
+  <a href="https://jithu7m.github.io/Portfolio/Resume.pdf" target="_blank" class="resume-btn">
+    View Resume
+  </a>
+</div>
 
-  <script>
-    const title = document.querySelector('h1');
-    const colors = ['#0ff', '#0f0', '#f0f', '#ff0'];
-    setInterval(() => {
-      const random = Math.floor(Math.random() * colors.length);
-      title.style.color = colors[random];
-      title.style.textShadow = `0 0 10px ${colors[random]}, 0 0 20px ${colors[random]}`;
-    }, 2000);
-  </script>
 </body>
 </html>
-
-
